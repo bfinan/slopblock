@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://slopblockzero.com";
+
 export const metadata: Metadata = {
   title: "Slopblock Zero - Block AI slop everywhere.",
   description: "Slopblock Zero is a platform and set of tools for blocking AI-generated content.",
@@ -9,9 +11,11 @@ export const metadata: Metadata = {
     title: "Slopblock Zero - Block AI-generated content on any website.",
     description: "Slopblock Zero is a platform and set of tools for tagging, filtering, and blocking AI-generated content.",
     type: "website",
+    url: siteUrl,
+    siteName: "Slopblock Zero",
     images: [
       {
-        url: "/slopsign_centered.jpg",
+        url: `${siteUrl}/slopsign_centered.jpg`,
         width: 1200,
         height: 630,
         alt: "Slopblock Zero",
@@ -22,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Slopblock Zero - Block AI-generated content everywhere.",
     description: "Slopblock Zero is a platform and set of tools for blocking AI-generated content.",
-    images: ["/slopsign_centered.jpg"],
+    images: [`${siteUrl}/slopsign_centered.jpg`],
   },
 };
 
