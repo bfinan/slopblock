@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8">
-          <p className="text-sm text-gray-500">All text on this site was written by a human.</p>
+          <p className="text-sm text-gray-500">All text and images on this site are created by a human.</p>
         </div>
       </div>
     </footer>
