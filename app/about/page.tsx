@@ -23,7 +23,7 @@ export default function About() {
             className="text-blue-600 underline hover:text-blue-800"
           >
             uBlock Origin
-          </Link>
+          </Link>{" "}
           block ads, our goal is to give you tools to control the amount of AI-generated content you see.
         </p>
         
