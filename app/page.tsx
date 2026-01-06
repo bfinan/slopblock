@@ -1,5 +1,30 @@
-import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Slopblock Zero - Block AI slop everywhere.",
+  description: "Slopblock Zero is a platform and set of tools for blocking AI-generated content.",
+  openGraph: {
+    title: "Slopblock Zero - Block AI-generated content on any website.",
+    description: "Slopblock Zero is a platform and set of tools for tagging, filtering, and blocking AI-generated content.",
+    type: "website",
+    images: [
+      {
+        url: "/slopsign_centered.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Slopblock Zero",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Slopblock Zero - Block AI-generated content everywhere.",
+    description: "Slopblock Zero is a platform and set of tools for blocking AI-generated content.",
+    images: ["/slopsign_centered.jpg"],
+  },
+};
 
 export default function Home() {
   return (
