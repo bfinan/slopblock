@@ -47,10 +47,10 @@ export default function About() {
         
         <h2 className="mb-4 mt-10 text-2xl font-bold text-gray-900 sm:text-3xl">Tools to Block AI Slop</h2>
         <p className="mb-4 text-base leading-7 text-gray-700 sm:text-lg">
-          Individual social media platforms such as X/Twitter, YouTube, and Facebook have made changes to label AI slop. These tools are insufficient, as it is easier to generate slop than it is to moderate it.
+          Individual social media platforms such as X/Twitter, YouTube, and Facebook have made small changes to label some AI slop. These changes are insufficient, because it is easier to generate slop than it is to moderate it.
         </p>
         <p className="mb-4 text-base leading-7 text-gray-700 sm:text-lg">
-          The companies that host these platforms are also incentivized to allow it. AI slop engages users and drives revenue for them. Additionally, the companies that host these platforms make money from generating AI slop, and often encourage their users to make AI slop.
+          The companies that host these platforms are also incentivized to allow AI slop. It engages users and drives revenue for them. Additionally, the companies that host these platforms make money from generating AI slop, and often encourage their users to make AI slop.
         </p>
         <p className="mb-6 text-base leading-7 text-gray-700 sm:text-lg">
           The ubiquity of all of this AI slop creates a need for a way to filter it. But how?
