@@ -8,7 +8,7 @@ export default function Header() {
         {/* Left side: Logo and Title */}
         <Link href="/" className="flex items-center gap-2 sm:gap-3">
           <Image
-            src="/logo256transparent.png"
+            src="/logo/logo256transparent.png"
             alt="SB"
             width={40}
             height={40}
