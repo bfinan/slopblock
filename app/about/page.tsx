@@ -6,7 +6,25 @@ export default function About() {
       <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 sm:py-12 md:py-16">
         <h1 className="mb-6 text-3xl font-bold text-gray-900 sm:text-4xl">About</h1>
         <p className="mb-8 text-base leading-7 text-gray-700 sm:text-lg">
-          Slopblock Zero is a platform and set of tools for blocking AI-generated content. Similar to AdBlock or uBlock Origin, our goal is to give you tools to control the amount of AI-generated content you see.
+          Slopblock Zero is a platform and set of tools for blocking AI-generated content. Similar to{" "}
+          <Link
+            href="https://getadblock.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline hover:text-blue-800"
+          >
+            AdBlock
+          </Link>{" "}
+          or{" "}
+          <Link
+            href="https://ublockorigin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline hover:text-blue-800"
+          >
+            uBlock Origin
+          </Link>
+          , our goal is to give you tools to control the amount of AI-generated content you see.
         </p>
         
         <h2 className="mb-4 mt-10 text-2xl font-bold text-gray-900 sm:text-3xl">AI Slop</h2>
