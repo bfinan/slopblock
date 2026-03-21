@@ -1,5 +1,9 @@
 # Contributing Guidelines
 
+Thank you for your interest in Slopblock Zero! We're happy to have you. Contributing to the project should be an enjoyable experience. If you're not having fun, you might not be contributing correctly!
+
+## Mission
+
 Your "North Star" or guiding principle for this project is to create tools for someone who is physically allergic to AI Slop.
 
 ## Generative AI ("GenAI") Usage
