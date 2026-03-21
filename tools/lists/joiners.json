@@ -1,0 +1,36 @@
+{
+    "platforms": [
+        {
+            "name": "twitter.com",
+            "joiner": "/"
+        },
+        {
+            "name": "tiktok.com",
+            "joiner": "/@/"
+        },
+        {
+            "name": "facebook.com",
+            "joiner": "/p/"
+        },
+        {
+            "name": "instagram.com",
+            "joiner": "/p/"
+        },
+        {
+            "name": "linkedin.com",
+            "joiner": "/in/"
+        },
+        {
+            "name": "youtube.com",
+            "joiner": "/channel/"
+        },
+        {
+            "name": "reddit.com",
+            "joiner": "/u/"
+        },
+        {
+            "name": "pinterest.com",
+            "joiner": "/user/"
+        }
+    ]
+}

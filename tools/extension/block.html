@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slopblock Zero</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #e3e1e1;
+        color: #0f0e0e;
+      }
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        text-align: left;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 32px;
+        align-items: center;
+        justify-items: start;
+      }
+      .logo {
+        width: 256px;
+        height: 256px;
+      }
+      .message {
+        max-width: 520px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+      }
+      .action-button {
+        min-width: 180px;
+        padding: 14px 24px;
+        border-radius: 50px;
+        border: 1px solid #2d2d2d;
+        background: #ffffff;
+        color: #0f0e0e;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .action-button:focus {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+      }
+      .messages {
+        margin-top: 24px;
+      }
+      .divider {
+        height: 1px;
+        background: #b5b5b5;
+        margin: 16px 0;
+      }
+      h1 {
+        font-size: 32px;
+        font-weight: 400;
+        margin-bottom: 16px;
+      }
+      p {
+        font-size: 18px;
+        margin: 0;
+      }
+      b {
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="layout">
+        <img
+          class="logo"
+          src="icons/icon256grayscale.png"
+          alt="Slopblock Zero icon"
+        />
+        <div class="message">
+          <h1>This page was blocked by <strong>Slopblock Zero</strong>.</h1>
+          <p>The account you are trying to view was tagged by community members as an <strong>AI Slop Account</strong>.</p>
+          <div class="actions">
+            <button class="action-button" id="back-button" type="button"></button>
+            <button class="action-button" id="proceed-button" type="button">Continue &gt;&gt;</button>
+          </div>
+          <div class="messages">
+            <p>PLACEHOLDER MESSAGE</p>
+            <div class="divider" aria-hidden="true"></div>
+            <p>PLACEHOLDER MESSAGE</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="block.js"></script>
+  </body>
+</html>

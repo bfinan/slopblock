@@ -1,0 +1,36 @@
+{
+  "platforms": [
+    {
+      "name": "twitter.com",
+      "aliases": ["x.com"]
+    },
+    {
+      "name": "tiktok.com",
+      "aliases": ["m.tiktok.com"]
+    },
+    {
+      "name": "facebook.com",
+      "aliases": ["m.facebook.com"]
+    },
+    {
+      "name": "instagram.com",
+      "aliases": ["m.instagram.com"]
+    },
+    {
+      "name": "linkedin.com",
+      "aliases": []
+    },
+    {
+      "name": "youtube.com",
+      "aliases": ["m.youtube.com"]
+    },
+    {
+      "name": "reddit.com",
+      "aliases": ["old.reddit.com"]
+    },
+    {
+      "name": "pinterest.com",
+      "aliases": ["m.pinterest.com"]
+    }
+  ]
+}
