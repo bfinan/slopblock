@@ -1,0 +1,1 @@
+Slopblock Zero is an extension that labels or blocks AI-Generated content on social media websites. Using a community curated list, the extension blocks navigation to known social media accounts that post solely AI-Generated content.
