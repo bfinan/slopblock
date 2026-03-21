@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slopblock Zero</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/icon16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/icon32.png" />
     <style>
       body {
         margin: 0;
@@ -55,6 +57,10 @@
       .messages {
         margin-top: 24px;
       }
+      .messages a {
+        color: #0f0e0e;
+        text-decoration: underline;
+      }
       .divider {
         height: 1px;
         background: #b5b5b5;
@@ -90,9 +96,9 @@
             <button class="action-button" id="proceed-button" type="button">Continue &gt;&gt;</button>
           </div>
           <div class="messages">
-            <p>PLACEHOLDER MESSAGE</p>
+            <p><a id="why-link" href="#">Why am I seeing this? 🤔</a></p>
             <div class="divider" aria-hidden="true"></div>
-            <p>PLACEHOLDER MESSAGE</p>
+            <p><a id="dispute-link" href="#">Was this account tagged incorrectly? 📝</a></p>
           </div>
         </div>
       </div>

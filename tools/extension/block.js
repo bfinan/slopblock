@@ -37,6 +37,8 @@ function navigateToUrl(targetUrl) {
 function configureBackButton() {
   const backButton = document.getElementById("back-button");
   const proceedButton = document.getElementById("proceed-button");
+  const whyLink = document.getElementById("why-link");
+  const disputeLink = document.getElementById("dispute-link");
 
   if (!backButton || !proceedButton) {
     return;
@@ -63,6 +65,20 @@ function configureBackButton() {
       navigateToUrl(blockedUrl);
     }
   });
+
+  if (whyLink) {
+    whyLink.href = "https://www.slopblockzero.com/extension/why-is-this-page-blocked";
+  }
+
+  if (disputeLink) {
+    const baseUrl = "https://www.slopblockzero.com/dispute";
+    if (blockedUrl) {
+      const query = new URLSearchParams({ comment: blockedUrl });
+      disputeLink.href = `${baseUrl}?${query.toString()}`;
+    } else {
+      disputeLink.href = baseUrl;
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", configureBackButton);
