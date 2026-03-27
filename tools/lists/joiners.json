@@ -6,7 +6,7 @@
         },
         {
             "name": "tiktok.com",
-            "joiner": "/@/"
+            "joiner": "/@"
         },
         {
             "name": "facebook.com",
@@ -14,7 +14,7 @@
         },
         {
             "name": "instagram.com",
-            "joiner": "/p/"
+            "joiner": "/"
         },
         {
             "name": "linkedin.com",

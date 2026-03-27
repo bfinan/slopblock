@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Slopblock Zero",
-    "version": "1.0.0.1",
+    "version": "1.0.0.2",
     "description": "Block AI-Generated Content on Every Platform",
     "action": {
       "default_icon": {
@@ -23,17 +23,24 @@
       "*://twitter.com/*",
       "*://x.com/*",
       "*://m.tiktok.com/*",
+      "*://www.tiktok.com/*",
       "*://tiktok.com/*",
       "*://m.facebook.com/*",
+      "*://www.facebook.com/*",
       "*://facebook.com/*",
       "*://m.instagram.com/*",
+      "*://www.instagram.com/*",
       "*://instagram.com/*",
+      "*://www.linkedin.com/*",
       "*://linkedin.com/*",
       "*://m.youtube.com/*",
+      "*://www.youtube.com/*",
       "*://youtube.com/*",
       "*://old.reddit.com/*",
+      "*://www.reddit.com/*",
       "*://reddit.com/*",
       "*://m.pinterest.com/*",
+      "*://www.pinterest.com/*",
       "*://pinterest.com/*"
     ],
     "background": {
@@ -47,17 +54,24 @@
           "*://x.com/*",
           "*://tiktok.com/*",
           "*://m.tiktok.com/*",
+          "*://www.tiktok.com/*",
           "*://facebook.com/*",
           "*://m.facebook.com/*",
+          "*://www.facebook.com/*",
           "*://instagram.com/*",
           "*://m.instagram.com/*",
+          "*://www.instagram.com/*",
           "*://linkedin.com/*",
+          "*://www.linkedin.com/*",
           "*://youtube.com/*",
           "*://m.youtube.com/*",
+          "*://www.youtube.com/*",
           "*://reddit.com/*",
           "*://old.reddit.com/*",
+          "*://www.reddit.com/*",
           "*://pinterest.com/*",
-          "*://m.pinterest.com/*"
+          "*://m.pinterest.com/*",
+          "*://www.pinterest.com/*"
         ],
         "js": ["contentScript.js"]
       }
