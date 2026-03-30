@@ -96,10 +96,10 @@ export default function About() {
         <p className="mb-6 text-base leading-7 text-gray-700 sm:text-lg">
           More details on the project's implementation can be found on the{" "}
           <Link
-            href="/project"
+            href="/project-roadmap"
             className="text-blue-600 underline hover:text-blue-800"
           >
-            Project page
+            Project Roadmap.
           </Link>
           .
         </p>
