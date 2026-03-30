@@ -10,10 +10,61 @@
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background: #e3e1e1;
+        background: #d8e4ec;
         color: #0f0e0e;
+        min-height: 100vh;
+      }
+      /* Blurred rectangle backdrop (simple shapes, heavy blur) */
+      .bg-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .bg-backdrop-inner {
+        position: absolute;
+        inset: -12%;
+        filter: blur(104px);
+        opacity: 0.9;
+        transform: translateZ(0);
+      }
+      .bg-rect {
+        position: absolute;
+      }
+      /* https://yugioh.fandom.com/wiki/Dramatic_Crossroads */
+      .bg-top-left {
+        left: 0;
+        top: 0;
+        width: 50%;
+        height: 50%;
+        background: #bcc2c7;
+      }
+      .bg-top-right {
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 50%;
+        background: #99a4ac;
+      }
+      .bg-bottom {
+        left: 0;
+        right: 0;
+        top: 50%;
+        bottom: 0;
+        background: #aeb8b2;
+      }
+      .bg-road {
+        left: 50%;
+        top: 50%;
+        width: calc(100% / 7);
+        height: 50%;
+        transform: translateX(-50%);
+        background: #b9b8b4;
       }
       .wrap {
+        position: relative;
+        z-index: 1;
         min-height: 100vh;
         display: flex;
         align-items: center;
@@ -21,11 +72,16 @@
         padding: 32px;
         text-align: left;
       }
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
       .layout {
         display: grid;
         grid-template-columns: auto 1fr;
         gap: 32px;
-        align-items: center;
+        align-items: flex-start;
         justify-items: start;
       }
       .logo {
@@ -38,26 +94,42 @@
       .actions {
         display: flex;
         gap: 12px;
-        margin-top: 24px;
+        margin-top: 40px;
+        margin-bottom: 32px;
+        align-self: center;
+        justify-content: center;
       }
       .action-button {
-        min-width: 180px;
-        padding: 14px 24px;
+        min-width: 480px;
+        padding: 28px 48px;
         border-radius: 50px;
         border: 1px solid #2d2d2d;
-        background: #ffffff;
+        background: #ffffff; 
         color: #0f0e0e;
-        font-size: 16px;
+        font-size: 32px;
         cursor: pointer;
       }
       .action-button:focus {
         outline: 2px solid #3b82f6;
         outline-offset: 2px;
       }
-      .messages {
-        margin-top: 24px;
+      .messages-row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        margin-top: 16px;
+        align-self: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 400;
+        color: #252323;
       }
-      .messages a {
+      .message-sep {
+        width: 1px;
+        height: 26px;
+        background: #b5b5b5;
+      }
+      .messages-row a {
         color: #0f0e0e;
         text-decoration: underline;
       }
@@ -67,13 +139,13 @@
         margin: 16px 0;
       }
       h1 {
-        font-size: 32px;
+        font-size: 48px;
         font-weight: 400;
-        margin-bottom: 16px;
+        margin-bottom: 24px;
       }
       p {
-        font-size: 18px;
-        margin: 0;
+        font-size: 24px;
+        margin: 0 0 16px 0;
       }
       b {
         color: #000000;
@@ -81,25 +153,35 @@
     </style>
   </head>
   <body>
+    <div class="bg-backdrop" aria-hidden="true">
+      <div class="bg-backdrop-inner">
+        <div class="bg-rect bg-top-left"></div>
+        <div class="bg-rect bg-top-right"></div>
+        <div class="bg-rect bg-bottom"></div>
+        <div class="bg-rect bg-road"></div>
+      </div>
+    </div>
     <div class="wrap">
-      <div class="layout">
-        <img
-          class="logo"
-          src="icons/icon256.png"
-          alt="Slopblock Zero icon"
-        />
-        <div class="message">
-          <h1>This page was blocked by <strong>Slopblock Zero</strong>.</h1>
-          <p>The account you are trying to view was tagged by community members as an <strong>AI Slop Account</strong>.</p>
-          <div class="actions">
-            <button class="action-button" id="back-button" type="button"></button>
-            <button class="action-button" id="proceed-button" type="button">Continue &gt;&gt;</button>
+      <div class="content">
+        <div class="layout">
+          <img
+            class="logo"
+            src="icons/icon256.png"
+            alt="Slopblock Zero icon"
+          />
+          <div class="message">
+            <h1>This page was blocked by <strong>Slopblock Zero</strong>.</h1>
+            <p>The account you are trying to view was tagged by community members as an <strong>AI Slop Account</strong>.</p>
           </div>
-          <div class="messages">
-            <p><a id="why-link" href="#">Why am I seeing this? 🤔</a></p>
-            <div class="divider" aria-hidden="true"></div>
-            <p><a id="dispute-link" href="#">Was this account tagged incorrectly? 📝</a></p>
-          </div>
+        </div>
+        <div class="actions">
+          <button class="action-button" id="back-button" type="button"></button>
+          <button class="action-button" id="proceed-button" type="button">Continue ⟶</button>
+        </div>
+        <div class="messages-row">
+          <a id="why-link" href="#">Why am I seeing this? 🤔</a>
+          <div class="message-sep" aria-hidden="true"> | </div>
+          <a id="dispute-link" href="#">Was this account tagged incorrectly? 📝</a>
         </div>
       </div>
     </div>

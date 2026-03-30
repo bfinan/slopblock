@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:extension": "node --test tools/test/*.test.js"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",

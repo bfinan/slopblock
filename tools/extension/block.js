@@ -49,7 +49,7 @@ function configureBackButton() {
   const previousUrl = params.get("prev");
   const canNavigateBack = Boolean(previousUrl);
 
-  backButton.textContent = canNavigateBack ? "<< Back" : "X Close";
+  backButton.textContent = canNavigateBack ? "<< Back" : "✕ Close";
 
   backButton.addEventListener("click", () => {
     if (canNavigateBack) {

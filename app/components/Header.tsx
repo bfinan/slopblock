@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Header() {
+  const tagSlopAccountsUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSfbDHClcrB1bjsGmc2aJJiL6oghCx_k0kN8ZzRPfZ8F8UyGWQ/viewform?usp=publish-editor";
+
   return (
     <header className="w-full border-b border-gray-200 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-4 sm:px-6">
@@ -30,28 +33,37 @@ export default function Header() {
           >
             About
           </Link>
+          <details className="group relative hidden sm:block">
+            <summary className="flex list-none cursor-pointer items-center gap-1 rounded-md px-3 py-2 text-base text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900 [&::-webkit-details-marker]:hidden">
+              Project
+              <span className="text-gray-400" aria-hidden="true">
+                ▾
+              </span>
+            </summary>
+            <div className="absolute left-0 top-full z-20 mt-2 hidden min-w-52 rounded-md border border-gray-200 bg-white py-1 shadow-md group-open:block">
+              <Link
+                href="/project"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              >
+                Project Overview
+              </Link>
+              <Link
+                href={tagSlopAccountsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              >
+                Tag Slop Accounts
+              </Link>
+            </div>
+          </details>
           <Link
-            href="/project"
-            className="hidden sm:block text-base text-gray-700 hover:text-gray-900 transition-colors"
-          >
-            Project
-          </Link>
-          <Link
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfbDHClcrB1bjsGmc2aJJiL6oghCx_k0kN8ZzRPfZ8F8UyGWQ/viewform?usp=publish-editor"
+            href="https://slopblockzero.com/install"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 sm:gap-2 rounded-md bg-blue-600 px-3 py-1 sm:px-4 text-sm sm:text-base leading-normal text-white hover:bg-blue-700 transition-colors"
           >
-            <Image
-              src="/c-hair-w.svg"
-              alt=""
-              width={20}
-              height={20}
-              className="h-4 w-4 sm:h-5 sm:w-5"
-              unoptimized
-            />
-            <span className="hidden sm:inline">Tag Slop Accounts</span>
-            <span className="sm:hidden">Tag</span>
+            <span>Install</span>
           </Link>
         </nav>
       </div>
