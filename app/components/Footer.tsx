@@ -61,7 +61,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-8 pt-8">
-          <p className="text-sm text-gray-500">All text and images on this site are created by a human. View our AI policy here: <Link href="https://github.com/bfinan/slopblock/blob/main/CONTRIBUTING.md#generative-ai-genai-usage" className="text-gray-700 hover:text-gray-900 transition-colors">AI Policy</Link>.  </p>
+          <p className="text-sm text-gray-500">All text and images on this site are created by a human. View our our <Link href="https://github.com/bfinan/slopblock/blob/main/CONTRIBUTING.md#generative-ai-genai-usage" className="text-gray-700 hover:text-gray-900 transition-colors">AI Policy</Link> here.  </p>
         </div>
       </div>
     </footer>

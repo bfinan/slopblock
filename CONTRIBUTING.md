@@ -16,7 +16,7 @@ You are not allowed to use generative AI for creative contributions to this proj
 AI usage is allowed for "non-creative" work, such as software development, coding, and language translation. While there are creative aspects to these types of work, the perceived benefit of using AI for them seems to outweigh the cost of lost expressiveness. 
 When using AI for coding, review the output carefully, and make styling changes manually. Even the color of the "small blue button" you told your editor to create should be reviewed.
 
-AI usage for "non-creative" work is allowed because it generally faster, and speed seems important for this project.
+AI usage for "non-creative" work is allowed because it generally faster, and speed seems important for this project. A small amount of hypocrisy is acknowledged.
 
 ## If you don't like something, fork the project
 
