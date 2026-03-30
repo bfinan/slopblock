@@ -4,6 +4,25 @@ import Link from "next/link";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://slopblockzero.com";
 
+type PlatformLogo = {
+  src: string;
+  label: string;
+  /** Optional classes for the circle interior (e.g. dark bg for light-colored SVGs) */
+  innerClassName?: string;
+};
+
+const platformLogos: PlatformLogo[] = [
+  { src: "/www/svg/facebook.svg", label: "Facebook" },
+  { src: "/www/svg/instagram.svg", label: "Instagram" },
+  { src: "/www/svg/youtube.svg", label: "YouTube" },
+  {
+    src: "/www/svg/x-light.svg",
+    label: "Twitter",
+    innerClassName: "bg-neutral-800",
+  },
+  { src: "/www/svg/tiktok-light.svg", label: "TikTok" },
+];
+
 export const metadata: Metadata = {
   title: "Slopblock Zero - Block AI slop everywhere.",
   description: "Slopblock Zero is a platform and set of tools for blocking AI-generated content.",
@@ -51,7 +70,7 @@ export default function Home() {
             </p>
 
             <Link
-              href="https://slopblockzero.com/install"
+              href="https://chromewebstore.google.com/detail/slopblock-zero/fghjlgmoofbfekdhldaandocejfdjoic"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex w-fit max-w-full items-center gap-3 rounded-xl bg-green-500 px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 sm:text-lg mx-auto md:mx-0"
@@ -87,10 +106,59 @@ export default function Home() {
           >
             <h2
               id="browse-authentic-heading"
-              className="text-center text-2xl font-semibold text-gray-900 sm:text-3xl md:text-left"
+              className="text-center text-2xl font-semibold text-gray-900 sm:text-3xl md:text-left mb-4"
             >
               Browse the authentic web
             </h2>
+            <h3 className="mb-6 text-center text-xl font-semibold text-gray-900 sm:text-2xl md:text-left">
+              Block AI Slop Accounts on:
+            </h3>
+            <div className="flex flex-wrap justify-center gap-8 md:justify-start md:gap-10 mb-10">
+              {platformLogos.map(({ src, label, innerClassName }) => (
+                <div
+                  key={src}
+                  className="flex w-[4.5rem] flex-col items-center gap-2 sm:w-[5.5rem]"
+                >
+                  <div
+                    className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-gray-300 sm:h-20 sm:w-20 ${innerClassName ?? "bg-white"}`}
+                  >
+                    <Image
+                      src={src}
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="h-9 w-9 object-contain sm:h-11 sm:w-11"
+                      unoptimized
+                    />
+                  </div>
+                  <span className="text-center text-sm font-medium text-gray-700 sm:text-base">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <h3 className="mb-6 text-center text-xl font-semibold text-gray-900 sm:text-2xl md:text-left">
+              Help the Community by Tagging AI Slop Accounts
+            </h3>
+            <p className="mb-6 text-center text-base leading-7 text-gray-700 sm:text-lg md:text-left">
+              Find an AI slop account in the wild? Tag it and add it to our list.
+            </p>
+            <Link
+              href="https://slopblockzero.com/tag-slop-accounts"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-auto mt-6 inline-flex w-fit max-w-full items-center gap-2 whitespace-nowrap rounded-xl bg-blue-500 px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 sm:text-lg md:mx-0"
+            >
+              <Image
+                src="/www/svg/c-hair-w.svg"
+                alt=""
+                width={24}
+                height={24}
+                className="h-6 w-6 shrink-0"
+                unoptimized
+              />
+              <span>Tag AI Slop</span>
+            </Link>
           </section>
         </div>
       </main>
