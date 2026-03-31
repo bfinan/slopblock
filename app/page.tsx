@@ -144,7 +144,7 @@ export default function Home() {
               Find an AI slop account in the wild? Tag it and add it to our list.
             </p>
             <Link
-              href="https://slopblockzero.com/tag-slop-accounts"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfbDHClcrB1bjsGmc2aJJiL6oghCx_k0kN8ZzRPfZ8F8UyGWQ/viewform?usp=sharing&ouid=105012026398903519730"
               target="_blank"
               rel="noopener noreferrer"
               className="mx-auto mt-6 inline-flex w-fit max-w-full items-center gap-2 whitespace-nowrap rounded-xl bg-blue-500 px-5 py-3 text-base font-semibold text-white shadow-sm transition-colors hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 sm:text-lg md:mx-0"
