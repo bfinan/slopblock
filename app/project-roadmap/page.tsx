@@ -23,7 +23,10 @@ export default function ProjectRoadmap() {
           Firefox support
         </li>
         <li>
-          Platform-level blocking: Automatically block AI Slop Accounts on individual platforms.
+          Platform-level blocking: Automatically block AI Slop Accounts on individual platforms
+        </li>
+        <li>
+          Support for blocking entire domains (such as blog sites) if all of the content on a website appears to be AI slop
         </li>
         </ul>
         <h2 className="mb-4 mt-10 text-2xl font-bold text-gray-900 sm:text-3xl">Contribute</h2>
