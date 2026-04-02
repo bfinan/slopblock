@@ -47,7 +47,14 @@ function configureBackButton() {
   const params = new URLSearchParams(window.location.search);
   const blockedUrl = params.get("blocked");
   const previousUrl = params.get("prev");
+  const blockContext = params.get("blockContext");
   const canNavigateBack = Boolean(previousUrl);
+
+  const explanationEl = document.getElementById("block-explanation");
+  if (explanationEl && blockContext === "post") {
+    explanationEl.innerHTML =
+      "The post you are trying to view is from an account tagged by community members as an <strong>AI Slop Account</strong>.";
+  }
 
   backButton.textContent = canNavigateBack ? "<< Back" : "✕ Close";
 

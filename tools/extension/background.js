@@ -104,6 +104,52 @@ function normalizeUrl(value) {
     }
 }
 
+/** Platforms where Path 2 applies: post URLs still contain host + profile path (see tools/dev/notes/user-paths.md). */
+const PATH2_CONTAINMENT_PLATFORMS = new Set(["twitter.com", "tiktok.com"]);
+
+/**
+ * Path 2 (X / Twitter / TikTok): true if the full URL string contains the host + profile
+ * segment anywhere (e.g. https://x.com/User/status/… contains x.com/user).
+ * Same idea for TikTok: … contains tiktok.com/@handle.
+ */
+function path2UrlContainsProfilePath(fullUrl, account, hostname) {
+    const lower = fullUrl.toLowerCase();
+    const user = account.username.toLowerCase();
+    const host = hostname.toLowerCase();
+
+    if (account.platform === "twitter.com") {
+        return lower.includes(`${host}/${user}`);
+    }
+
+    if (account.platform === "tiktok.com") {
+        return lower.includes(`${host}/@${user}`);
+    }
+
+    return false;
+}
+
+/**
+ * Block page copy: "post" vs profile when the blocked URL is a post/video (Path 2–style URLs).
+ */
+function blockedUrlIndicatesPost(targetUrl, matchedAccount) {
+    if (!matchedAccount || !targetUrl) {
+        return false;
+    }
+    try {
+        const parsed = new URL(targetUrl);
+        const path = parsed.pathname.toLowerCase();
+        if (matchedAccount.platform === "twitter.com") {
+            return path.includes("/status/");
+        }
+        if (matchedAccount.platform === "tiktok.com") {
+            return path.includes("/video/") || path.includes("/photo/");
+        }
+        return false;
+    } catch (error) {
+        return false;
+    }
+}
+
 async function shouldBlockUrl(url) {
     if (!url.startsWith("http://") && !url.startsWith("https://")) {
         return false;
@@ -129,6 +175,13 @@ async function shouldBlockUrl(url) {
             continue;
         }
 
+        if (PATH2_CONTAINMENT_PLATFORMS.has(account.platform)) {
+            if (path2UrlContainsProfilePath(url, account, hostname)) {
+                return account;
+            }
+            continue;
+        }
+
         const expectedPath = normalizePath(`${account.joiner}${account.username}`);
         if (pathname.toLowerCase().startsWith(expectedPath.toLowerCase())) {
             return account;
@@ -138,12 +191,12 @@ async function shouldBlockUrl(url) {
     return null;
 }
 
-chrome.webNavigation.onCommitted.addListener(async (details) => {
-    if (details.frameId !== 0) {
-        return;
-    }
-
-    const targetUrl = details.url;
+/**
+ * X/Twitter, TikTok, etc. often change the address bar via History API (in-feed clicks)
+ * without a full document navigation, so onCommitted may not run. onHistoryStateUpdated
+ * catches those SPA URL updates.
+ */
+async function handleNavigationUrl(tabId, targetUrl) {
     if (!targetUrl || targetUrl.startsWith("chrome-extension://")) {
         return;
     }
@@ -153,21 +206,65 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
 
     const matchedAccount = await shouldBlockUrl(targetUrl);
     if (matchedAccount) {
-        const allowedSet = allowlistByTab.get(details.tabId);
+        const allowedSet = allowlistByTab.get(tabId);
         const normalizedTarget = normalizeUrl(targetUrl);
         if (allowedSet && allowedSet.has(normalizedTarget)) {
-            lastSafeUrlByTab.set(details.tabId, targetUrl);
+            lastSafeUrlByTab.set(tabId, targetUrl);
             return;
         }
 
-        const previousUrl = lastSafeUrlByTab.get(details.tabId);
+        const previousUrl = lastSafeUrlByTab.get(tabId);
         const prevParam = previousUrl ? `&prev=${encodeURIComponent(previousUrl)}` : "";
-        const redirectUrl = `${BLOCK_PAGE_URL}?blocked=${encodeURIComponent(targetUrl)}${prevParam}`;
-        chrome.tabs.update(details.tabId, { url: redirectUrl });
+        let redirectUrl = `${BLOCK_PAGE_URL}?blocked=${encodeURIComponent(targetUrl)}${prevParam}`;
+        if (blockedUrlIndicatesPost(targetUrl, matchedAccount)) {
+            redirectUrl += "&blockContext=post";
+        }
+        chrome.tabs.update(tabId, { url: redirectUrl });
         return;
     }
 
-    lastSafeUrlByTab.set(details.tabId, targetUrl);
+    lastSafeUrlByTab.set(tabId, targetUrl);
+}
+
+function navigationFilter(details) {
+    return details.frameId === 0;
+}
+
+chrome.webNavigation.onCommitted.addListener((details) => {
+    if (!navigationFilter(details)) {
+        return;
+    }
+    void handleNavigationUrl(details.tabId, details.url);
+});
+
+chrome.webNavigation.onHistoryStateUpdated.addListener((details) => {
+    if (!navigationFilter(details)) {
+        return;
+    }
+    void handleNavigationUrl(details.tabId, details.url);
+});
+
+/** Fallback when the tab URL changes without a classic navigation (some SPA edge cases). */
+function urlLooksLikeXOrTikTok(url) {
+    if (!url || !isHttpUrl(url)) {
+        return false;
+    }
+    const u = url.toLowerCase();
+    return (
+        u.includes("x.com/") ||
+        u.includes("twitter.com/") ||
+        u.includes("tiktok.com/")
+    );
+}
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+    if (changeInfo.url === undefined) {
+        return;
+    }
+    if (!urlLooksLikeXOrTikTok(changeInfo.url)) {
+        return;
+    }
+    void handleNavigationUrl(tabId, changeInfo.url);
 });
 
 chrome.tabs.onRemoved.addListener((tabId) => {

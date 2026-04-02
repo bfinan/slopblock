@@ -9,7 +9,7 @@
 
 ## User clicks on a link to a Post where the URL contains a slop account's URL (Path 2)
 
-- [ ] not implemented
+- [x] implemented
 
 ### Path
     - (user is on a different page) - (attempted navigation to Post page) - (🛑 SBZ block page)

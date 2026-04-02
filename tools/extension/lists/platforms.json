@@ -2,7 +2,7 @@
   "platforms": [
     {
       "name": "twitter.com",
-      "aliases": ["x.com"]
+      "aliases": ["x.com", "mobile.twitter.com"]
     },
     {
       "name": "tiktok.com",
